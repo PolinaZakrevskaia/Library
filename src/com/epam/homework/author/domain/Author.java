@@ -3,13 +3,15 @@ package com.epam.homework.author.domain;
 
 import com.epam.homework.book.domain.Book;
 
+import java.util.List;
+
 public class Author {
 
     private Long id;
     private String lastName;
     private String name;
     private int yearOfBorn;
-    private Book[] books;
+    private List<Book> books;
 
     public Author(Long id) {
         this.id = id;
@@ -49,15 +51,17 @@ public class Author {
         this.yearOfBorn = yearOfBorn;
     }
 
-    public Book[] getBooks() {
+    public List<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(Book[] books) {
+    public void setBooks(List<Book> books) {
         this.books = books;
     }
 
-    public void deleteBook (Book book) {}
+    public void deleteBook (Book book) {
+        books.remove(book);
+    }
 
     @Override
     public String toString() {

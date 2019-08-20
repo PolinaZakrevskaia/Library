@@ -1,7 +1,13 @@
 package com.epam.homework.author.repo;
 
-import ru.yusdm.stud.lesson_6_2_collection_list.homework.Storage;
-import ru.yusdm.stud.lesson_6_2_collection_list.homework.author.domain.Author;
+
+import com.epam.homework.Storage;
+import com.epam.homework.author.domain.Author;
+import com.epam.homework.book.domain.Book;
+
+import java.util.List;
+
+import static com.epam.homework.Storage.books;
 
 public class AuthorRepoArrayImpl implements AuthorRepo {
     @Override
@@ -34,6 +40,24 @@ public class AuthorRepoArrayImpl implements AuthorRepo {
     public Long add(Author author) {
         Storage.addAuthor(author);
         return author.getId();
+    }
+
+    public Author[] findAuthorsByBook(long id) {
+        Author[] authors = new Author[100];
+        int index = 0;
+
+        for (Author author : Storage.authors) {
+
+            for (Book book : author.getBooks()) {
+                if (book.getId().equals(id)) {
+                    authors[index] = author;
+                    index++;
+                    break;
+                }
+            }
+
+        }
+        return authors;
     }
 
 }

@@ -28,26 +28,14 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void delete(Book book) {
-        Author[] authors = authorRepo.findAuthorsByBook(book.getId());
-
-        if (authors != null) {
-            for (Author author : authors) {
-                author.deleteBook(book);
-
-                if (book.withoutAuthors()) {
-                    authorRepo.delete(author);
-                }
-            }
-        }
-
         bookRepo.delete(book);
-
     }
 
 
 
     @Override
     public Long add(Book book) {
-        return null;
+
+        return bookRepo.add(book);
     }
 }

@@ -1,13 +1,17 @@
 package com.epam.homework;
 
-import ru.yusdm.stud.lesson_6_2_collection_list.homework.author.domain.Author;
-import ru.yusdm.stud.lesson_6_2_collection_list.homework.book.domain.Book;
+import com.epam.homework.author.domain.Author;
+import com.epam.homework.book.domain.Book;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class Storage {
     public static final int CAPACITY = 10;
 
 
     public static Book[] books = new Book[CAPACITY];
+    public static List<Book> bookList = new ArrayList<>();
     public static Long bookId = 1L;
     public static int bookIndex = 0;
 
@@ -19,6 +23,7 @@ public final class Storage {
     }
 
     public static Author[] authors = new Author[CAPACITY];
+    public static List<Author> authorList = new ArrayList<>();
     public static int authorIndex = 0;
     public static Long authorId = 1L;
 
@@ -50,6 +55,11 @@ public final class Storage {
         authorId++;
     }
 
+    public static void addAuthorToList (Author author)
+    {
+        authorList.add(author);
+    }
+
     public static void addBook(Book book) {
         book.setId(bookId);
         if (bookIndex % (CAPACITY) == 0 && bookIndex != 0) {
@@ -59,6 +69,11 @@ public final class Storage {
         }
         increaseBookIndex();
         bookId++;
+    }
+
+    public static void addBookToList (Book book)
+    {
+        bookList.add(book);
     }
 
     public static void removeBook(Book book) {
@@ -102,6 +117,11 @@ public final class Storage {
         books = newBooks;
     }
 
+    public static void removeBookFromList (Book book)
+    {
+        bookList.remove(book);
+    }
+
     public static void removeAuthor(Author author) {
         /**
          *  [0] = A
@@ -142,4 +162,9 @@ public final class Storage {
          */
         authors = newAuthors;
     }
-}
+
+    public static void removeAuthorFromList (Author author) {
+        authorList.remove(author);
+    }
+    }
+

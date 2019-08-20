@@ -1,8 +1,13 @@
 package com.epam.homework.book.repo;
 
-import ru.yusdm.stud.lesson_6_2_collection_list.homework.Storage;
-import ru.yusdm.stud.lesson_6_2_collection_list.homework.author.domain.Author;
-import ru.yusdm.stud.lesson_6_2_collection_list.homework.book.domain.Book;
+
+import com.epam.homework.Storage;
+import com.epam.homework.author.domain.Author;
+import com.epam.homework.book.domain.Book;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class BookRepoArrayImpl implements BookRepo {
 
@@ -39,6 +44,10 @@ public class BookRepoArrayImpl implements BookRepo {
     }
 
     @Override
+    public List<Book> findBooksByAuthor(Long id) {
+        return new ArrayList<>(Arrays.asList(findBooksByAuthor((long) id)));
+    }
+
     public Book[] findBooksByAuthor(long id) {
         Book[] books = new Book[100];
         int index = 0;
@@ -58,4 +67,5 @@ public class BookRepoArrayImpl implements BookRepo {
         //if no books then null
         return books;
     }
+
 }

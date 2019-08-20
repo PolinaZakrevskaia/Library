@@ -6,6 +6,8 @@ import com.epam.homework.author.repo.AuthorRepo;
 import com.epam.homework.book.domain.Book;
 import com.epam.homework.book.repo.BookRepo;
 
+import java.util.List;
+
 public class AuthorServiceImpl implements AuthorService {
 
     private final AuthorRepo authorRepo;
@@ -29,7 +31,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public void delete(Author author) {
-        Book[] booksWithAuthor = bookRepo.findBooksByAuthor(author.getId());
+        List<Book> booksWithAuthor = bookRepo.findBooksByAuthor(author.getId());
 
         if (booksWithAuthor != null) {
             for (Book book : booksWithAuthor) {
@@ -50,7 +52,5 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public void deleteBooksWhichOldAndSentReport() {
-
-    }
+    public void deleteBooksWhichOldAndSentReport() {}
 }

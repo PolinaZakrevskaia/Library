@@ -4,6 +4,7 @@ import com.epam.homework.author.InputAuthor;
 import com.epam.homework.author.domain.Author;
 import com.epam.homework.author.repo.AuthorRepo;
 import com.epam.homework.author.repo.AuthorRepoArrayImpl;
+import com.epam.homework.author.repo.AuthorRepoCollectionImpl;
 import com.epam.homework.author.service.AuthorService;
 import com.epam.homework.author.service.AuthorServiceImpl;
 import com.epam.homework.book.InputBook;
@@ -12,8 +13,12 @@ import com.epam.homework.book.domain.HandWrittenBook;
 import com.epam.homework.book.domain.PrintedBook;
 import com.epam.homework.book.repo.BookRepo;
 import com.epam.homework.book.repo.BookRepoArrayImpl;
+import com.epam.homework.book.repo.BookRepoCollectionImpl;
 import com.epam.homework.book.service.BookService;
 import com.epam.homework.book.service.BookServiceImpl;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LibraryDemo {
 
@@ -41,8 +46,8 @@ public class LibraryDemo {
             bookRepo = new BookRepoArrayImpl();
             authorRepo = new AuthorRepoArrayImpl();
         }else if (storageType.equals("collection")){
-            //bookRepo = new BookRepoCollectionImpl();
-            //authorRepo = new AuthorRepoCollectionImpl();
+            bookRepo = new BookRepoCollectionImpl();
+            authorRepo = new AuthorRepoCollectionImpl();
         }
 
         AuthorService authorService = new AuthorServiceImpl(authorRepo, bookRepo);
@@ -56,7 +61,7 @@ public class LibraryDemo {
 
     }
 
-    private static void initData(BookService bookRepo, AuthorService authorService) {
+    private static void initData(BookService bookService, AuthorService authorService) {
         InputBook inputBook1 = new InputBook();
         inputBook1.setName("Zolotaya rybka");
         inputBook1.setPublishYear(11);
@@ -71,14 +76,19 @@ public class LibraryDemo {
         inputAuthor.setLastName("Pushkin");
         inputAuthor.setYearOfBorn(22);
         Author author = valueOfForHandWrittenBook(inputAuthor);
-        author.setBooks(new Book[]{book1, book2});
+        List<Book> books = new ArrayList<>();
+        books.add(book1);
+        books.add(book2);
+        author.setBooks(books);
 
-        book1.setAuthors(new Author[]{author});
-        book2.setAuthors(new Author[]{author});
+        List<Author> authors = new ArrayList<>();
+        authors.add(author);
+        book1.setAuthors(authors);
+        book2.setAuthors(authors);
 
 
-        bookRepo.add(book1);
-        bookRepo.add(book2);
+        bookService.add(book1);
+        bookService.add(book2);
 
         //AuthorRepo
         authorService.add(author);

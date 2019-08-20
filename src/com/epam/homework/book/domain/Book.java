@@ -2,13 +2,16 @@ package com.epam.homework.book.domain;
 
 import com.epam.homework.author.domain.Author;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Book {
 
     protected Long id;
     protected String name;
     protected int publishYear;
     protected int totalPages;
-    protected Author[] authors;
+    protected List<Author> authors;
     protected BookType bookType;
 
     public BookType getBookType() {
@@ -51,11 +54,11 @@ public class Book {
         this.totalPages = totalPages;
     }
 
-    public Author[] getAuthors() {
+    public List<Author> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(Author[] authors) {
+    public void setAuthors(List<Author> authors) {
         this.authors = authors;
     }
 
@@ -70,11 +73,11 @@ public class Book {
     }
 
     public void deleteAuthor(Author author) {
-
+        authors.remove(author);
     }
 
     public boolean withoutAuthors() {
-
+        if (authors.size()==0 || authors==null) return true;
         return false;
     }
 }
