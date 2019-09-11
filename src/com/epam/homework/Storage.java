@@ -1,4 +1,4 @@
-package com.epam.homework;
+/*package com.epam.homework;
 
 import com.epam.homework.author.domain.Author;
 import com.epam.homework.book.domain.Book;
@@ -83,7 +83,7 @@ public final class Storage {
          *  [2] = C
          *  [3] = NULL
          */
-        for (int i = 0; i < books.length; i++) {
+/*        for (int i = 0; i < books.length; i++) {
 
             if (book.getId().equals(books[i].getId())) {
                 books[i] = null;
@@ -99,7 +99,7 @@ public final class Storage {
          *  [3] = NULL
          */
 
-        Book[] newBooks = new Book[books.length];
+/*        Book[] newBooks = new Book[books.length];
         int index = 0;
         for (Book b : books) {
             if (b != null) {
@@ -114,7 +114,7 @@ public final class Storage {
          *  [2] = NULL
          *  [3] = NULL
          */
-        books = newBooks;
+/*        books = newBooks;
     }
 
     public static void removeBookFromList (Book book)
@@ -129,7 +129,7 @@ public final class Storage {
          *  [2] = C
          *  [3] = NULL
          */
-        for (int i = 0; i < authors.length; i++) {
+/*        for (int i = 0; i < authors.length; i++) {
 
             if (author.getId().equals(authors[i].getId())) {
                 authors[i] = null;
@@ -145,7 +145,7 @@ public final class Storage {
          *  [3] = NULL
          */
 
-        Author[] newAuthors = new Author[Storage.authors.length];
+/*        Author[] newAuthors = new Author[Storage.authors.length];
         int index = 0;
         for (Author a : authors) {
             if (a != null) {
@@ -160,11 +160,11 @@ public final class Storage {
          *  [2] = NULL
          *  [3] = NULL
          */
-        authors = newAuthors;
+/*        authors = newAuthors;
     }
 
     public static void removeAuthorFromList (Author author) {
         authorList.remove(author);
     }
-    }
+    }*/
 

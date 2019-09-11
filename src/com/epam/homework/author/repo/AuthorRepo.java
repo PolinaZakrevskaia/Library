@@ -2,12 +2,11 @@ package com.epam.homework.author.repo;
 
 
 import com.epam.homework.author.domain.Author;
+import com.epam.homework.common.repo.BaseRepo;
 
-import java.util.List;
-
-public interface AuthorRepo {
-    int count();
+public interface AuthorRepo extends BaseRepo<Author, Long> {
+    /*int count();
     void print();
     void delete(Author author);
-    Long add(Author author);
+    Long add(Author author);*/
 }

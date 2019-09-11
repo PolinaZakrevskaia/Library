@@ -5,6 +5,8 @@ import com.epam.homework.author.repo.AuthorRepo;
 import com.epam.homework.book.domain.Book;
 import com.epam.homework.book.repo.BookRepo;
 
+import java.util.List;
+
 public class BookServiceImpl implements BookService {
 
     private final AuthorRepo authorRepo;
@@ -37,5 +39,19 @@ public class BookServiceImpl implements BookService {
     public Long add(Book book) {
 
         return bookRepo.add(book);
+    }
+
+    @Override
+    public List<Book> findBooksByAuthorAsList(long authorId) {
+        return bookRepo.findBooksByAuthor(authorId);
+    }
+
+    @Override
+    public Book findById(Long bookId) {
+        if (bookId != null) {
+            return bookRepo.findById(bookId);
+        } else {
+            return null;
+        }
     }
 }

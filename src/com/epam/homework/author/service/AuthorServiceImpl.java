@@ -53,4 +53,13 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public void deleteBooksWhichOldAndSentReport() {}
+
+    @Override
+    public Author findById(Long authorId) {
+        if (authorId != null) {
+            return authorRepo.findById(authorId);
+        } else {
+            return null;
+        }
+    }
 }

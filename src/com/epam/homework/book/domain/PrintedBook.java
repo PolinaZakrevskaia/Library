@@ -1,7 +1,5 @@
 package com.epam.homework.book.domain;
 
-import ru.yusdm.stud.lesson_6_2_collection_list.homework.book.domain.Book;
-
 public class PrintedBook extends Book {
     private String fontFamily;
 

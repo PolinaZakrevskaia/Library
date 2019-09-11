@@ -1,11 +1,11 @@
 package com.epam.homework.book.domain;
 
 import com.epam.homework.author.domain.Author;
+import com.epam.homework.common.domain.BaseDomain;
 
-import java.util.Arrays;
 import java.util.List;
 
-public class Book {
+public class Book extends BaseDomain<Long> {
 
     protected Long id;
     protected String name;
@@ -72,7 +72,9 @@ public class Book {
                 '}';
     }
 
-    public void deleteAuthor(Author author) {
+    public void deleteAuthor(Author author)
+    {
+        if (author != null && authors.contains(author))
         authors.remove(author);
     }
 

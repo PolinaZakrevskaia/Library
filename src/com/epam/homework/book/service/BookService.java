@@ -1,12 +1,14 @@
 package com.epam.homework.book.service;
 
 import com.epam.homework.book.domain.Book;
+import com.epam.homework.common.service.BaseService;
 
-public interface BookService {
+import java.util.List;
 
-    int count();
+public interface BookService extends BaseService<Book,Long> {
+    /*int count();
     void print();
     void delete(Book book);
-    Long add(Book book);
-
+    Long add(Book book);*/
+    List<Book> findBooksByAuthorAsList(long authorId);
 }

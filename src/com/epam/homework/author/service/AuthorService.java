@@ -2,11 +2,8 @@ package com.epam.homework.author.service;
 
 
 import com.epam.homework.author.domain.Author;
+import com.epam.homework.common.service.BaseService;
 
-public interface AuthorService {
-    int count();
-    void print();
-    void delete(Author author);
-    Long add(Author author);
-    void deleteBooksWhichOldAndSentReport();
+public interface AuthorService extends BaseService<Author, Long> {
+        void deleteBooksWhichOldAndSentReport();
 }
